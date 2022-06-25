@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const foodCropsRoutes = require("./routes/foodCropsRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ mongoose
 app.use(express.json());
 
 app.use("/api/v1/food-crops/", foodCropsRoutes);
+app.use("/api/v1/users/", userRoutes);
 
 app.use("*", (req, res) => {
   res.status(404).json({
