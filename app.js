@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookerParser = require("cookie-parser");
 require("dotenv").config();
 
 const foodCropsRoutes = require("./routes/foodCropsRoutes");
@@ -16,6 +17,7 @@ mongoose
   .catch((err) => console.error(err));
 
 app.use(express.json());
+app.use(cookerParser());
 
 app.use("/api/v1/food-crops/", foodCropsRoutes);
 app.use("/api/v1/users/", userRoutes);
